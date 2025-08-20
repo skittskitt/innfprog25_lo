@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 2</title>
+</head>
+<body>
+    <p id="melding"></p>
+    <script> // <script> mangler ">"
+
+//Vi har hentet brukerinformasjon, og lagret navnet til brukeren i en variabel kalt user_name
+    const user_name = "Marius" // String-teksten manglet "
+//Vi har hentet fødselsåret til brukeren og lagret det i variabelen user_birthyear
+    const user_birthyear = 1983 //Skrivefeil på const
+//Vi regner ut alder ved å ta året vi er i minus fødselsår, og lagrer svaret i en ny variabel kalt age
+    let age = 2022 - user_birthyear 
+    //user og birthyear er ikke skrevet likt som variabelen er deklarert.
+    //const age må være let age.
+    //Vi kan ikke regne med user_name
+//Så lager vi en tekst for utskrift ved hjelp av konkatinering
+    const utskrift = "Hei " + user_name + " (" + age + "år)"; //Manglet + før user_name.
+
+//...og skriver den ut til elementet med id melding
+    document.getElementById("melding").innerHTML = utskrift;
+    </script>
+</body>
+</html>
