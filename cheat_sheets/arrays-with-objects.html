@@ -14,48 +14,60 @@
                 office: "D1-016",
                 email: "toremake@hiof.no",
                 birthyear: 1983,
+                courses: ["Innføring i programmering, kommunikasjonsdesign, UI designprosjekt, Utvikling av interaktive nettsteder"]
             },
             {
                 name: "Daniela Blauhut",
                 office: "D1-015",
                 email: "danielb@hiof.no",
                 birthyear: 1977,
+                courses: ["Designmetoder, UI designprosjekt"]
             },
             {
                 name: "Ann-Charlott Karlsen",
                 office: "D1-062",
                 email: "ackarlsen@hiof.no",
                 birthyear: 1992,
+                courses: ["Webutvikling, Utvikling i interaktive nettsteder"]
             },
             {
                 name: "Ole Edvard Ørebæk",
                 office: "D1-061A",
                 email: "oledvo@hiof.no",
                 birthyear: 1993,
+                courses: ["Innføring i datasikkerhet"]
             },
             {
                 name: "Thor Andreas Holberg Murtnes-Hatlestad",
                 office: "Hjemmekontor",
                 email: "thoraho@hiof.no",
                 birthyear: 1990,
+                courses: ["Innføring i programmering"]
             },
         ]
 
+        console.log(lecturers)
+
         const profiles = document.getElementById("profiles")
 
-        /*lecturers.map(lecturer => {
+        lecturers.map(lecturer => {
             profiles.innerHTML += 
             `<li>
                 <h3>${lecturer.name}</h3>
-                <span>Alder ${2025 - lecturer.birthyear}</span>
+                <span>Alder: ${2025 - lecturer.birthyear}</span>
                 <p>Kontor: ${lecturer.office}</p>
-                <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
+                <a href="mailto:${lecturer.email}">Skriv e-post til ${lecturer.name}</a>
+                <ul>
+                    ${lecturer.courses.map(course => {
+                        return `<li>${course}</li>`
+                    }).join(" ")}
+                </ul>
             </li>`
             console.log(lecturer)
-        })*/
+        })
 
         //Vi finner alle foreleserne som er født etter 1990.
-        lecturers.filter(lec => lec.birthyear >= 1990).map(lecturer => {
+        /*lecturers.filter(lec => lec.birthyear >= 1990).map(lecturer => {
             profiles.innerHTML += 
             `<li>
                 <h3>${lecturer.name}</h3>
@@ -63,7 +75,7 @@
                 <p>Kontor: ${lecturer.office}</p>
                 <a href="mailto:${lecturer.email}">Skriv epost til ${lecturer.name}</a>
             </li>`
-        })
+        })*/
     </script>
 </body>
 </html>
