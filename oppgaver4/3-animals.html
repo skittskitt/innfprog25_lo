@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 3</title>
+</head>
+<body>
+    <ul id="animals"></ul>
+    <script>
+        const dyr = ["katt", "hund", "skilpadde","hest", "pinnsvin", "påfugl", "blåhval", "slange", "frosk", "pikachu"]
+        let htmlString = ""
+
+         for(let counter = 0; counter < dyr.length; counter++ ){
+            console.log(counter)
+
+           htmlString = `<li>${dyr[counter]}</li>`
+        }
+        document.getElementById("animals").innerHTML = htmlString
+    </script>
+</body>
+</html>

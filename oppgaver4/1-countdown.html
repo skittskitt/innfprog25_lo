@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 1</title>
+</head>
+<body>
+    <ul id="nedtelling"></ul>
+    <script>
+        let htmlString = ""
+        
+        for(let teller = 10; teller >= 0; teller --){
+            console.log(teller)
+
+           htmlString = `<li>${teller}</li>`
+
+           if(teller === 0){
+            htmlString = "We have take-off"
+            } else {
+            htmlString = `<li>${teller}</li>`
+            }
+
+        }
+
+        const start = 10
+        const slutt = 0
+        let sum = 0
+
+        document.getElementById("nedtelling").innerHTML = htmlString
+
+        
+    </script>
+</body>
+</html>
