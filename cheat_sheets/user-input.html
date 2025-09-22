@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brukerinput</title>
+</head>
+<body>
+    <!--Knapp med HTML-attributt-->
+    <button onClick="printMessage()">Try me</button>
+    <button id="printEventMessage">Trigger event</button>
+    <!--Skjema-->
+        <label for="name">
+            Name:
+            <input type="text" id="name">
+        </label>
+        <button id="submitform">Submit</button>
+
+    <script>
+        function printMessage(){
+            const year = new Date().getFullYear()
+            console.log("Hei, verden! Året er " + year)
+        }
+
+        //Knapp med EventListener
+        function printEventMessage(){
+            console.log("Hei verden, igjen!")
+        }
+
+        const eventBtn = document.getElementById("printEventMessage")
+        eventBtn.addEventListener("click", () => {
+            printEventMessage()
+        })
+
+        //Ta imot brukerinput fra skjemafelt
+        //Value tar i mot verdien brukeren skriver inn i input
+        function getUserInput(){
+            let getUsername = document.getElementById("name")
+            //console.log(getUsername.value)
+            userArray.push(getUsername.value)
+            console.log(userArray)
+        //Tømmer inputfeltet
+            getUsername.value = ""
+        }
+
+        //Verdien vi sender i imputfeltet vil bli dyttet inn i en array
+        const userArray = []
+
+        const submitform = document.getElementById("submitform")
+        submitform.addEventListener("click", () => {
+            getUserInput()
+        })
+
+    </script>
+</body>
+</html>
