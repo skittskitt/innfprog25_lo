@@ -19,7 +19,7 @@
     </header>
 
     <main>
-        <section id="employee_list"> <!--FEIL: img.png peker ikke til rikgtig bilde.-->
+        <section id="employee_list"> <!--FEIL 1: avatar.png peker ikke til rikgtig bilde. Jeg kan hente bilde ved å først peke til riktig mappe, også til riktig bilde.-->
             <article class="card">
                 <img src="img1/man.png" alt="Navn Navnesen" />
                 <p>Navn Navnesen<br />navn@email.com</p>
@@ -29,7 +29,7 @@
                 <p>Navn Navnesen<br />navn@email.com</p>
             </article>
             <article class="card">
-                <img src="img1/woman.png" alt="Navn Navnesen" /> <!--FEIL: Det manglet en tredje artikkel.-->
+                <img src="img1/woman.png" alt="Navn Navnesen" /> <!--FEIL 2: Det manglet en tredje artikkel.-->
                 <p>Navn Navnesen<br />navn@email.com</p>
             </article>
         </section>
@@ -41,7 +41,7 @@
         </p>
     </footer>
 
-    <script> // FEIL: <script> er feilskrevet.
+    <script> // FEIL 3: <script> er feilskrevet.
         //Variabel with company name
         const company = "Programmeriet"
 
@@ -53,19 +53,19 @@
         ]
 
         //Secret keys to access url and images
-        let images_folder = "img" // FEIL: Manglet ""
+        let images_folder = "img" // FEIL 4: Manglet ""
         let secret_key = 0
         let ak_key
         
         //Turn on or off safeguard to allow system to run
-        const safeguard = true
+        const safeguard = true //Jeg endrer safeguard fra false til true for å kunne kjøre utskriften.
         
         //Control of safeguard to create image folder name
         if(safeguard === true) {
             ak_key = secret_key + 1
         }
         const safe_images_folder = images_folder += ak_key
-        console.log("Image folder: " + safe_images_folder) //FEIL: console.log er feilskrevet
+        console.log("Image folder: " + safe_images_folder) //FEIL 5: console.log er feilskrevet
 
         let HTML_employees = ""
 
@@ -79,7 +79,7 @@
                     <p>${e.email}</p>
                 </article>`)
 
-            document.getElementbyId("employee_list").innerHTML = HTML_employees //FEIL: Feilskrevet HTML_employees
+            document.getElementById("employee_list").innerHTML = HTML_employees //FEIL 6: Feilskrevet getElementById og HTML_employees
         }
 
         //System prints
