@@ -14,6 +14,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+
     <header>
         <section id="player">
             <ul>
@@ -26,10 +27,11 @@
         </section>
         <img src="icons/c3_logo.svg" alt="Code Concept Collector" />
         <nav>
-            <button id="notebookToggler"><img src="icons/notebook.svg" />Åpne kladdeboka <span class="shortcut">n</span></button>
-            <button id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
+            <button onClick="toggleVisibility('notebook')" id="notebookToggler"><img src="icons/notebook.svg" />Åpne kladdeboka <span class="shortcut">n</span></button>
+            <button onClick= "toggleVisibility('info')" id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
         </nav>
     </header>
+
     <main>
         
         <section id="notebook">
@@ -60,6 +62,7 @@
                 </table>
             </div>
         </section>
+
         <section id="info" class="hidden">
             <div id="info-page">
                 <h2>Info / Hvordan spille C<sup>3</sup></h2>
@@ -72,7 +75,9 @@
                 <p>Gå på en oppgave når denne dukker opp for å løse en oppgave for å score poeng. Du får 10 poeng for å løse en oppgave, 1 poeng for hvert konsept du samler.</p>
             </div>
         </section>
+
     </main>
+
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
         //TODO: config
@@ -92,8 +97,6 @@
             functions: 3,
             arrays: 7
         }
-
-        
 
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
@@ -115,6 +118,74 @@
         }
 
         updateStaticUI()
+
+        //Oppgave 1: En funksjon for å sjule notatblokk og informasjonsskjerm.
+        function toggleVisibility(elementid) {
+            const elem = document.getElementById(elementid)
+            console.log(elem)
+            if(elem.classList.contains("hidden")){
+                elem.style.display = "block"
+                elem.classList.remove("hidden")
+            } else {
+                elem.style.display = "none"
+                elem.classList.add("hidden")
+            }
+        }
+        toggleVisibility("info")
+
+        //Oppgave 2: Endre synlighet på notatbok og info-rekst med tastaturet.
+        document.addEventListener("keydown", (event) => {
+            if(event.code === "KeyN"){
+                toggleVisibility("notebook")
+            } else if(event.code === "KeyI"){
+                toggleVisibility("info")
+            }
+        })
+
+        //Oppgave 3: Bytt onClick fra oppgave 1 med addEventListener.
+        const infoTogglerBtn = document.getElementById("infoToggler")
+        infoTogglerBtn.addEventListener("click", () => {
+            toggleVisibility("info")
+        })
+
+        const notebookTogglerBtn = document.getElementById("notebookToggler")
+
+        notebookTogglerBtn.addEventListener("click", () => {
+            toggleVisibility("notebook")
+        })
+
+        //Oppgave 4: Funksjon for å oppdatere HTML-utskrift av en konfigurasjonsverdi.
+        function updateSingleStaticUI(element, value){
+            console.log(element, value)
+            document.getElementById(element).innerHTML = value
+        }
+
+        updateSingleStaticUI("points", 10)
+        updateSingleStaticUI("energy", 60)
+
+        //Oppgave 5: Funksjon for å oppdatere konfigurasjonsverdier.
+
+        function updateConfigValue(configType, value){
+            obj === "notebook" ? notebook [configType] += value :  gameConfig [configType] += value
+
+            /*configType === "variables" ? notebook.variables += value : null
+            configType  === "arrays" ? notebook.arrays += value : null
+            configType === "loops" ? notebook.loops += value : null
+            configType === "functions" ? notebook.functions += value : null
+
+            configType === "energy" ? notebook.energy += value : null
+            configType === "points" ? notebook.points += value : null
+            configType === "duration" ? notebook.duration += value : null*/
+            
+            updateStaticUI()
+        }
+
+        updateConfigValue("variables", 10)
+        updateConfigValue("arrays", 100)
+
+
+
     </script>
+
 </body>
 </html>
