@@ -25,23 +25,45 @@
         let random_color_code = "#"
         
         //Din kode for å løse problem 1 her.
-        /*Lage en funksjon som henter tilfeldige karakterer fra lisen. Kan muligesns løses med en while-løkke eller if-test.*/
+        /*Lage en funksjon som henter tilfeldige karakterer fra lisen.*/
         //Kilde: https://dev.to/thecodepixi/what-the-hex-how-to-generate-random-hex-color-codes-in-javascript-21n
+        //En funksjon med en while løkke, som sier at så lenge stringen er mindre enn 7 skal den hente en tilfeldig karakter.
+        //Vi må så printe ut fargen som tekst, som vi kan gjøre med å hente id-en fra span-taggen.
         function randomColor(){
             while(random_color_code.length < 7){
-                random_color_code += hexadecimal_characters_array[Math.round(Math.random() * 16)]
+                random_color_code += hexadecimal_characters_array[Math.floor(Math.random() * 16)]
             }
             return random_color_code
         }
         randomColor()
+        document.getElementById("random_color").innerHTML = random_color_code
 
         console.log(random_color_code)
 
         //PROBLEM 2
-        /*En funsjon som skjekker om ord finnes. Kan løses med en if-test.*/
+        /*En funsjon som skjekker om ord finnes.*/
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
+
         //Din kode for å løse problem 2 her.
+        //for å skjekke om et ord finnes kan vi bruke .includes på arrayen. Vi må ha en if-test skal den kunne gi svar på om noe finnes eller ikke.
+        //Vi skjekker for "betingelse", "algoritme" og "problemlosning".
+
+        function wordSearch(word){
+            const wordExist = programming_words.includes(word)
+            console.log(wordExist)
+
+            wordExist === true && word === "betingelse" ? document.getElementById("betingelse_sjekk").innerHTML = "Ja" : document.getElementById("betingelse_sjekk").innerHTML = "Nei"
+            wordExist === true && word === "algoritme"? document.getElementById("algoritme_sjekk").innerHTML = "Ja" : document.getElementById("algoritme_sjekk").innerHTML = "Nei"
+            wordExist === true && word === "problemlosning" ? document.getElementById("problemlosning_sjekk").innerHTML = "Ja" : document.getElementById("problemlosning_sjekk").innerHTML = "Nei"
+        }
+
+        wordSearch("problemlosning")
+
+        /*wordExist === true ? document.getElementById("betingelse_sjekk").innerHTML = "Ja" : document.getElementById("betingelse_sjekk").innerHTML = "Nei"
+        wordExist === true ? document.getElementById("algoritme_sjekk").innerHTML = "Ja" : document.getElementById("algoritme_sjekk").innerHTML = "Nei"
+        wordExist === true ? document.getElementById("problemlosning_sjekk").innerHTML = "Ja" : document.getElementById("problemlosning_sjekk").innerHTML = "Nei"*/
+
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
