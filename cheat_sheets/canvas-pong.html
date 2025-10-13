@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas pong</title>
+
+    <style>
+        *{
+            margin: 0;
+            color: #b35373;
+        }
+        #pong{
+            background-color: #fce2f7;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pong"></canvas>
+
+    <script>
+        const canvas = document.getElementById("pong")
+        const ctx = canvas.getContext("2d")
+
+        console.log(window)
+
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+
+        const racket = {
+            width: canvas.width / 50,
+            height: canvas.height / 3,
+            x: 0,
+            y: 0
+        }
+
+        const ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 10
+        }
+
+        //Spiller 1
+        ctx.beginPath()
+        ctx.rect(racket.width, (canvas.height - racket.height) / 2, racket.width, racket.height)
+        ctx.fillStyle = "#8053b3"
+        ctx.fill()
+
+        //Spiller 2
+        ctx.rect(canvas.width - (racket.width * 2), (canvas.height - racket.height) / 2, racket.width, racket.height)
+        ctx.fillStyle = "#8053b3"
+        ctx.fill()
+        ctx.closePath()
+
+        ctx.beginPath()
+        ctx.arc(ball.x, ball.y, ball.radius, 0, 2 *Math.PI)
+        ctx.fillStyle = "#d64fbd"
+        ctx.fill()
+        ctx.closePath()
+
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(canvas.width, canvas.height)
+        ctx.moveTo(canvas.width, 0)
+        ctx.lineTo(0, canvas.height)
+        ctx.stoke()
+        ctx.closePath()
+    </script>
+</body>
+</html>
