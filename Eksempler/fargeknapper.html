@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fargeknapper</title>
+    <style>
+        #gronn { color: green; }
+        #bla { color: blue; }
+        #rod { color: red; }
+    </style>
+</head>
+<body>
+    <h1 id="melding">Hei verden!</h1>
+    <p>Klikk på ønsket farge:</p>
+    <ul>
+        <li id="gronn">Grønn</li>
+        <li id="bla">Blå</li>
+        <li id="rod">Rød</li>
+    </ul>
+    <script>
+        document.getElementById("gronn").onclick = visGronn;
+        document.getElementById("bla").onclick = visBla;
+        document.getElementById("rod").onclick = visRod;
+
+        function oppstart() {
+            document.getElementById("melding").style.color = gronn;
+            document.getElementById("melding").style.color = bla;
+            document.getElementById("melding").style.color = rod;
+        }
+    </script>
+</body>
+</html>

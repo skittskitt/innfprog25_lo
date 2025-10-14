@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildefremviser</title>
+</head>
+<body>
+    <img src="#" id="bilde"/>
+    <p><input type="radio" name="bildeliste" id="rbtnBilde1"
+    value="img1.png"/>Bilde 1</p>
+    <p><input type="radio" name="bildeliste" id="rbtnBilde2"
+    value="img2.png"/>Bilde 2</p>
+    <p><input type="radio" name="bildeliste" id="rbtnBilde3"
+    value="img3.png"/>Bilde 3</p>
+
+    <script>
+        function visBilde1() {
+            document.getElementById("bilde").src =
+            document.getElementById("rbtnBilde1").value;
+        }
+        function visBilde2() {
+            document.getElementById("bilde").src =
+            document.getElementById("rbtnBilde2").value;
+        }
+        function visBilde3() {
+            document.getElementById("bilde").src =
+            document.getElementById("rbtnBilde3").value;
+        }
+        document.getElementById("rbtnBilde1").onclick = visBilde1;
+        document.getElementById("rbtnBilde2").onclick = visBilde2;
+        document.getElementById("rbtnBilde3").onclick = visBilde3;
+    </script>
+</body>
+</html>

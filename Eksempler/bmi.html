@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI-kalkulator</title>
+</head>
+<body>
+    <p>Vekt: <input type="text" id="txtVekt" /> 
+    Høyde: <input type="text" id="txtHoyde"/></p>
+    <button id="btnBeregn">Beregn</button>
+    <p id="resultat"></p>
+    <script>
+        //BMI = vekt / (høyde * høyde)
+            document.getElementById("btnBeregn").onclick = beregn;
+
+        function beregn() {
+           let hoyde = document.getElementById("txtHoyde").value;
+           let vekt = document.getElementById("txtVekt").value;
+           let bmi = vekt / (hoyde * hoyde);
+           document.getElementById("resultat").innerHTML = "Din BMI er..." + bmi;   
+        }
+    </script>
+</body>
+</html>

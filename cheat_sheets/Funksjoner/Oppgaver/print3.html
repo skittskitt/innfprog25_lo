@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print3</title>
+</head>
+<body>
+    <p id="name"></p>
+    <p id="mail"></p>
+    <p id="age"></p>
+
+    <script>
+        function print(name = "Ikke oppgitt", birthyear = "Ikke oppgitt", email = "Ikke oppgitt"){
+            document.getElementById("name").innerHTML = name
+
+            if(birthyear === "Ikke oppgitt"){
+                document.getElementById("age").innerHTML = birthyear
+            } else { //Sørger for at datatypen blir et tall.
+                const birthYearNumber = Number(birthyear)
+                const age = 2025 - birthYearNumber
+                document.getElementById("age").innerHTML = age
+            }
+
+            document.getElementById("mail").innerHTML = email
+        }
+        print("Lou", 1998, "louiseos@gmail.com")
+    </script>
+</body>
+</html>

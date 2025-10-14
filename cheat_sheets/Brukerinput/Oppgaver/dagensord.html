@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagens ord</title>
+</head>
+<body>
+    <h1>Dagens ord er: <span id="ord"></span></h1>
+    <label for="brukerord">
+        <input type="text" id="brukerord">
+    </label>
+    <button id="sendord">Lagre ord</button>
+
+    <script>
+        const button = document.getElementById("sendord")
+        const input = document.getElementById("brukerord")
+        const todaysWord = document.getElementById("ord")
+
+        button.addEventListener("click", printMsg)
+
+        function printMsg(){
+            todaysWord.innerHTML = input.value
+            input.value = ""
+            //Sett fokus tilbake til inputfeltet.
+            input.focus()
+        }
+    </script>
+</body>
+</html>

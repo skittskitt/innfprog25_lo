@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirkel-tegner</title>
+    <style>
+        #tegneflate {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tegneflate" width="500" height="500"></canvas>
+    <script>
+        document.getElementById("tegneflate").onmousemove = flyttMus;
+        function flyttMus(evt) {
+            let ctx = document.getElementById("tegneflate").getContext("2d");
+            ctx.beginPath();
+            ctx.arc(evt.clientX, evt.clientY, 20, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

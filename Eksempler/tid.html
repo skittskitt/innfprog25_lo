@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klokketest</title>
+</head>
+<body>
+    <p>Klokken er nå: <span id="klokkeutskrift">X</span></p>
+    <script>
+        window.onload = oppdater;
+        function oppdater(){
+            var tid = new Date();
+            document.getElementById("klokkeutskrift").innerHTML = tid
+            tid.getHours() + ":" + tid.getMinutes() + ":" + tid.getSeconds();
+            setTimeout(oppdater, 1000);
+        }
+    </script>
+</body>
+</html> 
