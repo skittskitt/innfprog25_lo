@@ -29,17 +29,19 @@
         let random_color_code = "#"
         
         //Din kode for å løse problem 1 her.
-        /*Lage en funksjon som henter tilfeldige karakterer fra lisen.*/
         //Kilde: https://dev.to/thecodepixi/what-the-hex-how-to-generate-random-hex-color-codes-in-javascript-21n
-        //En funksjon med en while løkke, som sier at så lenge stringen er mindre enn 7 skal den hente en tilfeldig karakter.
-        //Vi må så printe ut fargen som tekst, som vi kan gjøre med å hente id-en fra span-taggen.
+        //Jeg lager en funksjon med en while-løkke, som sier at så lenge lengden på koden er mindre enn 7 skal den hente en ny tilfeldig karakter.
         function randomColor(){
+            //Valgte å bruke Math.floor oven for Math.round, for å kunne runde opp tall og sikre vi får et helt nummer.
             while(random_color_code.length < 7){
                 random_color_code += hexadecimal_characters_array[Math.floor(Math.random() * 16)]
             }
+            //Retunerer resulatet
             return random_color_code
         }
+        //Skriver funksjonen for å kjøre den.
         randomColor()
+        //For å printe ut fargen som tekst, henter jeg id-en fra span-taggen.
         document.getElementById("random_color").innerHTML = random_color_code
 
         console.log(random_color_code)
@@ -49,25 +51,28 @@
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
-        //for å skjekke om et ord finnes kan vi bruke .includes på arrayen. Vi må ha en if-test skal den kunne gi svar på om noe finnes eller ikke.
+        /*for å skjekke om et ord finnes kan vi bruke .includes på arrayen. Når jeg da skriver inn ordet i søkefeltet vil
+        jeg får opp ja / nei om ordet finnes.*/
         //Vi skjekker for "betingelse", "algoritme" og "problemlosning".
 
         function wordSearch(word){
             const wordExist = programming_words.includes(word)
             console.log(wordExist)
 
-            wordExist === true && word === "betingelse" ? document.getElementById("betingelse_sjekk").innerHTML = "Ja" : document.getElementById("betingelse_sjekk").innerHTML = "Nei"
-            wordExist === true && word === "algoritme"? document.getElementById("algoritme_sjekk").innerHTML = "Ja" : document.getElementById("algoritme_sjekk").innerHTML = "Nei"
-            wordExist === true && word === "problemlosning" ? document.getElementById("problemlosning_sjekk").innerHTML = "Ja" : document.getElementById("problemlosning_sjekk").innerHTML = "Nei"
+            //Jeg lager if-tester som skjekker for hvert av ordene, og skriver ja eller nei med id til span.
+            word === "betingelse" ? document.getElementById("betingelse_sjekk").innerHTML = "Ja" : document.getElementById("betingelse_sjekk").innerHTML = "Nei"
+            word === "algoritme"? document.getElementById("algoritme_sjekk").innerHTML = "Ja" : document.getElementById("algoritme_sjekk").innerHTML = "Nei"
+            word === "problemlosning" ? document.getElementById("problemlosning_sjekk").innerHTML = "Ja" : document.getElementById("problemlosning_sjekk").innerHTML = "Nei"
         }
 
-        //Legger til et søkefelt for å lete etter ord.
+        //Søkefelt for å lete etter ord.
         function input(){
             let getInput = document.getElementById("word")
             wordSearch(getInput.value)
             getInput.value = ""
         }
 
+        //Legger til addEventListnener til knapper slik at den hører etter clikk og kjøre imput().
         const submit = document.getElementById("submit")
         submit.addEventListener("click", () => {
             input()
@@ -75,19 +80,13 @@
 
         console.log(input)
 
-        
-
-        /*wordExist === true ? document.getElementById("betingelse_sjekk").innerHTML = "Ja" : document.getElementById("betingelse_sjekk").innerHTML = "Nei"
-        wordExist === true ? document.getElementById("algoritme_sjekk").innerHTML = "Ja" : document.getElementById("algoritme_sjekk").innerHTML = "Nei"
-        wordExist === true ? document.getElementById("problemlosning_sjekk").innerHTML = "Ja" : document.getElementById("problemlosning_sjekk").innerHTML = "Nei"*/
-
-
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
-        //Vi må finne en måte å regne gjennomsnitt på tall, også hente tallene fra arrayen.
+        /*Jeg bruker en for-løkke for å lete i gjennom arrayen for nummer og legge dem sammen. Med return henter
+        vi summen og deler den på lengden. */
         //https://medium.com/@ryan_forrester_/average-of-an-array-in-javascript-how-to-guide-85e97dd1443e
         function average(number){
             let avg = 0;
@@ -95,6 +94,7 @@
                 avg += number[i]
             } return avg / number.length
         }
+        //Jeg kjører koden for begge arrayene og skriver dem ut med span id.
         let sum1 = average(tall_array_en)
         let sum2 = average(tall_array_to)
 

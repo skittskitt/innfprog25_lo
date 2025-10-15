@@ -26,26 +26,22 @@
     //PROBLEM 1
         
      //AI-kode for å løse problem 1 her.
-    function genererTilfeldigFarge() {
+    const hexadecimal_characters = "ABCDEF1234567890";
+    const hexadecimal_characters_array = Array.from(hexadecimal_characters);
 
-    // Generer et tilfeldig tall mellom 0 og 255 for hver fargekanal (rød, grønn, blå)
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
+    function generateRandomHexColor() {
+        let random_color_code = "#";
+    
+        for (let i = 0; i < 6; i++) {
+            const random_index = Math.floor(Math.random() * hexadecimal_characters_array.length);
+            random_color_code += hexadecimal_characters_array[random_index];
+        }
 
-    // Konverter tallene til heksadesimal og formatér dem som en fargekode
-    const hexFarge = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    console.log(random_color_code);
+    return random_color_code;
+    }
 
-    // Skriv ut fargekoden i konsollen
-    console.log(hexFarge);
-
-    // Returner fargekoden
-    document.getElementById("random_color").innerHTML = hexFarge
-    return hexFarge;
-}
-
-// Kall funksjonen for å generere og skrive ut en tilfeldig hexadesimal fargekode
-    genererTilfeldigFarge();
+document.getElementById("random_color").innerHTML = generateRandomHexColor()
 
     //PROBLEM 2
     const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
