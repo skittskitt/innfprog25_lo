@@ -6,7 +6,7 @@
     <title>Kalkulator</title>
 </head>
 <body>
-    <h2>Resultat<span id="resultat"></span></h2>
+    <h2>Resultat = <span id="resultat"></span></h2>
 
     <input type="number" id="tall1">
     <input type="number" id="tall2">
@@ -17,6 +17,30 @@
     <button id="gange">Gange</button>
 
     <script>
+        const nr1 = document.getElementById("tall1")
+        const nr2 = document.getElementById("tall2")
+        const resultat = document.getElementById("resultat")
+
+        function add(){ // parseInt gjør om string til number.
+            resultat.innerHTML = parseInt(nr1.value) + parseInt(nr2.value)
+        }
+
+        function sub(){
+            resultat.innerHTML = parseInt(nr1.value) - parseInt(nr2.value)
+        }
+
+        function div(){
+            resultat.innerHTML = parseInt(nr1.value) / parseInt(nr2.value)
+        }
+
+        function mult(){
+            resultat.innerHTML = parseInt(nr1.value) * parseInt(nr2.value)
+        }
+
+        document.getElementById("pluss").addEventListener("click", add)
+        document.getElementById("minus").addEventListener("click", sub)
+        document.getElementById("dele").addEventListener("click", div)
+        document.getElementById("gange").addEventListener("click", mult)
 
     </script>
 </body>

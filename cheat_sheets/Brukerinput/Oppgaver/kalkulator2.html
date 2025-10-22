@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator 2</title>
+</head>
+<body>
+    <input type="number" id="tall1">
+
+    <select name="operator" id="operator">
+        <option value="pluss">Pluss</option>
+        <option value="minus">Minus</option>
+        <option value="dele">Dele</option>
+        <option value="gange">Multiply</option>
+    </select>
+
+    <input type="number" id="tall2">
+
+    <button type="button" id="regnUt">Regn ut</button>
+    <h2>Resultat: <span id="resultat"></span></h2>
+    
+    <script>
+        const tall1 = document.getElementById("tall1")
+        const tall2 = document.getElementById("tall2")
+        const operator = document.getElementById("operator")
+        const resultat = document.getElementById("resultat")
+        const btn = document.getElementById("regnUt")
+
+        function utregning(tall1, operator, tall2){
+            if(operator === "pluss") {
+                document.getElementById("resultat").innerHTML = tall1 + tall2
+            } else if(operator ==="minus") {
+                document.getElementById("resultat").innerHTML = tall1 - tall2
+            } else if(operator === "dele") {
+                document.getElementById("resultat").innerHTML = tall1 / tall2
+            } else if(operator === "gange") {
+                document.getElementById("resultat").innerHTML = tall1 * tall2
+            }
+        }
+
+        btn.addEventListener("click", function() {
+            utregning(parseInt(tall1.value), operator.value, parseInt(tall2.value))
+        })
+
+    </script>
+</body>
+</html>
