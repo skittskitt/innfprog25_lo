@@ -31,10 +31,10 @@
         </nav>
     </header>
     <main>
-        
+        <canvas id="anim-area"></canvas>
+
         <section id="notebook">
             <div id="notebook-page">
-                
                 <h2>Notater</h2>
                 <table>
                     <tr>
@@ -60,6 +60,7 @@
                 </table>
             </div>
         </section>
+
         <section id="info" class="hidden">
             <div id="info-page">
                 <h2>Info / Hvordan spille C<sup>3</sup></h2>
@@ -72,15 +73,25 @@
                 <p>Gå på en oppgave når denne dukker opp for å løse en oppgave for å score poeng. Du får 10 poeng for å løse en oppgave, 1 poeng for hvert konsept du samler.</p>
             </div>
         </section>
+
     </main>
     <script>
         //PREPARE GAME CONFIG AND VARIABLES
+        const canvas =  document.getElementById("anim-area")
+
+        canvas.width = 800
+        canvas.height = 600
+
+        const ctx = canvas.getContext("2d")
+        
         //TODO: config
         const gameConfig = {
             playerName: "Jostein",
             energy: 10,
             points: 4000,
-            duration: 30
+            duration: 30,
+            gamePaused: false,
+            pauseText: "Press P to pause"
         }
 
         console.log(gameConfig)
@@ -93,7 +104,14 @@
             arrays: 7
         }
 
-        
+        //Fortran
+        const fortran = {
+            speed: 1,
+            x: canvas.width / 2,
+            y: canvas.height / 2
+        }
+
+        const itemTypes = ["variables", "arrays", "loops", "functions", "energydrinks", "bugs"]
 
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
@@ -132,11 +150,19 @@
         document.addEventListener("keydown", function(event) {
             if(event.key === "n") {
                 toggleVisibility("notebook")
-            }
-            if(event.key === "i") {
+            } else if(event.key === "i") {
                 toggleVisibility("info")
+            } else if (event.code === "KeyP"){
+                /*gameConfig.gamePaused === true 
+                ? gameConfig.gamePaused = false 
+                : gameConfig.gamePaused === false 
+                ? gameConfig.gamePaused = true 
+                : null*/
+
+                gameConfig.gamePaused  = !gameConfig.gamePaused
             }
         })
+        
         //WS2, Oppg 3:
         document.getElementById("notebookToggler").addEventListener("click", function() {
             toggleVisibility("notebook")
@@ -166,6 +192,52 @@
         updateConfigValue("energy", -3)
         updateConfigValue("duration", 100)
         updateConfigValue("loops", 1000)
+
+        let fortranLoaded = false
+        let fortranImage = new Image()
+        fortranImage.src = "icons/fortran.png"
+        fortranImage.onload = () => {
+            fortranLoaded = true
+        }
+
+        function drawItem(){
+            let itemImage = new Image()
+            itemImage.src = "icons/array.svg"
+            itemImage.onload = () => {
+                ctx.drawImage (itemImage, canvas.width / 2, canvas.height / 2)
+            }
+        }
+        drawItem()
+
+        requestAnimationFrame = window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.webkitRequestAnimationFrame || window.requestAnimationFrame
+
+        function drawElements(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.drawImage(fortranImage, fortran.x, fortran.y)
+
+            if(gameConfig.gamePaused === true){
+                ctx.beginPath()
+                ctx.fillStyle = "red"
+                ctx.font = "3rem Arial"
+                ctx.fillText("PAUSED", canvas.width / 2 - 100, canvas.height / 2)
+                ctx.closePath()
+
+                gameConfig.pauseText = "Press P to unpause"
+            } else {
+                gameConfig.pauseText = "Press P to pause"
+            }
+
+            ctx.beginPath()
+            ctx.fillStyle = "#ffffff"
+            ctx.fillRect(canvas.width -150, canvas.height - 25, 150, 25)
+            ctx.fillStyle = "#3c429b"
+            ctx.font = "1rem Arial"
+            ctx.fillText(gameConfig.pauseText, canvas.width - 140, canvas.height - 7)
+            ctx.closePath()
+
+            requestAnimationFrame(drawElements)
+        }
+        drawElements()
 
     </script>
 </body>
