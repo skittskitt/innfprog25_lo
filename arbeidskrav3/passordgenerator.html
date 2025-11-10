@@ -4,23 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passordgenerator</title>
+    <style> /*CSS for bedre leselighet*/
+        body{
+            font-family: arial;
+            padding: 1rem;
+        }
+    </style>
 </head>
 <body>
     <h1>Passordgenerator</h1>
     <!-- Felter for brukervalg her -->
+    <!--Passordlengden må ikke gå i minus.-->
+        Passordlengde: <input type="number" id="length" min="1">
+        Små bokstaver: <input type="checkbox" id="lowercase">
+        Store bokstaver: <input type="checkbox" id="uppercase">
+        Spesialtegn: <input type="checkbox" id="specialcharacter">
+        Tall: <input type="checkbox" id="number">
 
-
-     <p>Ditt passord: <span id="generatedPassword"></span></p>
+        <button onclick="passwordgenerator()">Generer Passord</button>
+        <p>Ditt passord: <span id="generatedPassword"></span></p>
 
      <script>
+        /*Likt hexkode generator? Lage en array for å så hente karakterene til passord.
+        Felt for å legge til lengde på passord og checkbox-knapper for å kunne bestemme hva det består av.
+        Når checkboksene blir huket av, blir karakterene i hver av de arrayene slått sammen, også generet til passord*/
+
         const lowercase = "abcdefghijklmnopqrstuvwxyz";
         const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const numbers = "0123456789";
         const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
 
-        function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
-            /* Din kode her */
+        //https://www.geeksforgeeks.org/javascript/how-to-generate-a-random-password-using-javascript/
+        function passwordgenerator() {
+
+            //variabel for å holde på karakterene.
+            let checkedSymbols = ""
+
+            //Lager variabler og kobler dem til hver av inputene. Bruker .cheked for å se etteravhukning og .value for å hente verdi.
+            //
+            const checkL = document.getElementById("length").value
+            const checkLow = document.getElementById("lowercase").checked
+            const checkUp = document.getElementById("uppercase").checked
+            const checkChar = document.getElementById("specialcharacter").checked
+            const checkNum = document.getElementById("number").checked
+
+            //If-tester som legger til karakterene til en string hvis huket av.
+            if(checkLow){checkedSymbols += lowercase}
+            if(checkUp){checkedSymbols += uppercase}
+            if(checkChar){checkedSymbols += symbols}
+            if(checkNum){checkedSymbols += numbers}
+
+            //Variabel som skal holde på passord
+            let password = ""
+
+            /*
+            console.log(checkedSymbols)
+            console.log(checkL)
+            console.log(password)
+            */
+
+            //En for-løkke som skal hente en ny karakter til den når lengden som er bestemt.
+            //https://stackoverflow.com/questions/1349404/generate-a-string-of-random-characters
+            for(let i = 0; i < checkL; i++){
+                password += checkedSymbols[Math.floor(Math.random() * checkedSymbols.length)]
+            } 
+            //Skriver passordet til p-tag.
+            document.getElementById("generatedPassword").innerHTML = password
         }
+
      </script>
 </body>
 </html>
