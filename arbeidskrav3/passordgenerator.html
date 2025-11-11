@@ -8,13 +8,17 @@
         body{
             font-family: arial;
             padding: 1rem;
+
+            input{
+                margin: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Passordgenerator</h1>
     <!-- Felter for brukervalg her -->
-    <!--Passordlengden må ikke gå i minus.-->
+    <!--min=1 for at passordlengden ikke skal gå i minus.-->
         Passordlengde: <input type="number" id="length" min="1">
         Små bokstaver: <input type="checkbox" id="lowercase">
         Store bokstaver: <input type="checkbox" id="uppercase">
@@ -25,23 +29,24 @@
         <p>Ditt passord: <span id="generatedPassword"></span></p>
 
      <script>
-        /*Likt hexkode generator? Lage en array for å så hente karakterene til passord.
-        Felt for å legge til lengde på passord og checkbox-knapper for å kunne bestemme hva det består av.
-        Når checkboksene blir huket av, blir karakterene i hver av de arrayene slått sammen, også generet til passord*/
+        /*
+        - Lage inputfelt, checkbox-knapper og button.
+        - Samle alle valgte karakterer til en variabel/string.
+        - Hente verdiene.
+        - while eller for-løkke? generere tilfeldige karakterer.
+        */
 
         const lowercase = "abcdefghijklmnopqrstuvwxyz";
         const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const numbers = "0123456789";
         const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
 
-        //https://www.geeksforgeeks.org/javascript/how-to-generate-a-random-password-using-javascript/
         function passwordgenerator() {
 
-            //variabel for å holde på karakterene.
+            //variabel for å holde på valgte karakterer.
             let checkedSymbols = ""
 
-            //Lager variabler og kobler dem til hver av inputene. Bruker .cheked for å se etteravhukning og .value for å hente verdi.
-            //
+            //Lager variabler og kobler dem til hvert av inputene. Bruker .cheked for å se etteravhukning og .value for å hente verdi.
             const checkL = document.getElementById("length").value
             const checkLow = document.getElementById("lowercase").checked
             const checkUp = document.getElementById("uppercase").checked
@@ -63,12 +68,11 @@
             console.log(password)
             */
 
-            //En for-løkke som skal hente en ny karakter til den når lengden som er bestemt.
-            //https://stackoverflow.com/questions/1349404/generate-a-string-of-random-characters
+            //for-løkke som skal hente en ny karakter til den når lengden som er bestemt.
             for(let i = 0; i < checkL; i++){
                 password += checkedSymbols[Math.floor(Math.random() * checkedSymbols.length)]
             } 
-            //Skriver passordet til p-tag.
+            //Skriver passordet til <p>.
             document.getElementById("generatedPassword").innerHTML = password
         }
 

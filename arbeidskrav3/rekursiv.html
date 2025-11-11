@@ -17,17 +17,20 @@
 
             --Ditt svar her. Husk kilder--
             //https://www.javascripttutorial.net/javascript-recursive-function/
-            En rekrusiv funksjon er en funksjon som kaller på seg selv inni funksjonen. På denne måten kan den kjøre til den blir stoppet.
+            En rekrusiv funksjon er en funksjon som kaller på seg selv inni den samme funksjonen. 
+            Den kjøres når funksjonen starter, og forsetter å kjøre til den blir stoppet.
         */
 
-        /*Bruke Math.random og deretter runde av nummeret.
-        Skive ut tilfeldig tall, if-test for å skjekke tall er 4 eller 7 og dermed stoppe funksjonen.*/
+        /* 
+        - Generere tall: Math.random for å generere tilfeldig nummer og Math.floor for å runde av nummeret.
+        - Skrive ut tall: Skive ut tallene til ul. += Legger til +1 listepunkt.
+        - Rekrusiv: if-test for å skjekke tall er 4 eller 7, med andre tall skal den kalles på nytt.*/
 
         function numberSelector() {
             // Din kode her
             console.log(numberSelector)
 
-            const number = Math.floor(Math.random() * 9) + 1
+            const number = Math.floor(Math.random() * 9) + 1 // +1 for at tallet ikke skal bli 0.
             
             document.getElementById("numberList").innerHTML += 
             `<li>${number}</li>`
