@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Admin</title>
+</head>
+<body>
+    <header>
+        <h1>Høyskolen JS</h1>
+    </header>
+
+    <h2>Legg til ansatt:</h2>
+    <section class="form">
+        <form>
+        <!--Fornavn-->
+        <label for="fnavn">Fornavn:</label>
+        <input type="text" id="fnavn" name="fnavn">
+        <!--Etternavn-->
+        <label for="enavn">Etternavn:</label>
+        <input type="text" id="enavn" name="enavn">
+        <!--Kontor-->
+        <label for="kontor">Kontor:</label>
+        <input type="text" id="kontor" name="kontor">
+        <!--Epost-->
+        <label for="epost">Epost:</label>
+        <input type="text" id="epost" name="epost">
+        <!--Kurs1-->
+        <label for="stilling">Stilling:</label>
+        <select name="stilling" id="stilling">
+            <option value="VelgStilling">Velg stilling</option>
+            <option value="rektor">Rektor</option>
+            <option value="dekan">Dekan</option>
+            <option value="vaktmester">Vaktmester</option>
+            <option value="professor">Professor</option>
+            <option value="lektor">Lektor</option>
+        </select>
+        <!--Kurs2-->
+        <label for="kursansvar">Kurs:</label>
+        <input type="text" id="kursansvar" name="kursansvar">
+        <!--Submit-->
+        <button type="button" onclick="f6()">Legg til ansatt</button>
+        </form>
+    </section>
+
+    <main>
+        <section id="ansattMap"></section>
+
+        <section>
+            <h2>Kursoversikt:</h2>
+            <ul id="kurs">
+            </ul>
+        </section>
+    </main>
+
+    <script src="../oppgave1/register.js"></script>
+    <script src="../oppgave1/actions.js"></script>
+</body>
+</html>

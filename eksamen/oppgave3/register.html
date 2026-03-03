@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Registrer</title>
+</head>
+<body>
+    <header>
+        <h1>Høyskolen JS</h1>
+        <nav>
+            <ul>
+                <li><button id="filtrerAnsatt" onclick="f2()">Vis alle ansatte</button></li>
+                <li><button id="filtrerAnsatt" onclick="f5a()">Vis Undervisere</button></li>
+                <li><button id="filtrerAnsatt" onclick="f5b()">Vis administrasjon</button></li>
+            </ul>
+            <ul>
+                <li>Vis kun stilling</li>
+                <li><button id="filtrerStilling" onClick="f3('professor')">Professor</button></li>
+                <li><button id="filtrerStilling" onClick="f3('dekan')">Dekan</button></li>
+                <li><button id="filtrerStilling" onClick="f3('rektor')">Rektor</button></li>
+                <li><button id="filtrerStilling" onClick="f3('vaktmester')">Vaktmester</button></li>
+                <li><button id="filtrerStilling" onClick="f3('lektor')">Lektor</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Ansatte</h2>
+        <section id="ansattMap"></section>
+
+        <section>
+            <h2>Kursoversikt:</h2>
+            <ul id="kurs">
+            </ul>
+        </section>
+    </main>
+    <script src="../oppgave1/register.js"></script>
+    <script src="../oppgave1/actions.js"></script>
+</body>
+</html>

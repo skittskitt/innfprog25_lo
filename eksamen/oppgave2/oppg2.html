@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refaktorering</title>
+</head>
+<body>
+    <script>
+       //Denne koden finner det lengste ordet i en liste med ord.
+       /*Denne koden trenger ikke å stå i en egen funksjon, så jeg fjerner "start()*/
+            let ordListe = ["kode", "programmering", "design", "data", "variabel"];
+
+            function finnLengsteOrd(liste) {
+                let lengste = "";
+                for (let i = 0; i < liste.length; i++) {
+                    /*Trenger ikke en variabel for å holde på liste[i] hvis den kan skrives inn direkte,
+                    dermed fjerner jeg variabelen "ord".*/
+                    if (liste[i].length > lengste.length) {lengste = liste[i];}     /*Forkortet if-else*/
+                } console.log("Det lengste ordet i listen er: " + lengste);         /*Bytter ut return med console.log()*/
+            } finnLengsteOrd(ordListe)                                              /*finnLengsteOrd() trenger ikke å stå i en egen funksjon.*/
+            
+            /* Fjerner funksjonen skriv ut resultat:
+            - Tok bort let resultat. Vi trenger ikke å ha finnLengstOrd() i en variabel når den blir kalt
+            selv ved å skrives inn i koden.
+            - Flytter ut console.log() og bytter den med "resulat" siden den holder samme verdi.
+            - Fjernet funksjonen skrivUtResultat() siden den hadde ingen funksjon i koden.*/
+
+        //Denne koden regner ut gjennomsnittsalderen til en gruppe personer.
+        /*Denne koden trenger ikke å stå i en funksjon, så jeg fjerner startProgram()*/
+            let personer = [
+                { navn: "Ola", alder: 24 },
+                { navn: "Kari", alder: 32 },
+                { navn: "Per", alder: 29 },
+                { navn: "Anne", alder: 41 }
+            ];
+
+            function hentAldre(liste) {
+                let alderArray = [];
+                    for (let i = 0; i < liste.length; i++) {
+                        let person = liste[i];
+                        alderArray.push(person.alder);
+                    } return alderArray;
+                }
+            let alderArray = hentAldre(personer);
+
+            function regnUtGjennomsnitt(alderArray) {
+                let sum = 0;
+                for (let i = 0; i < alderArray.length; i++) {
+                    sum = sum + alderArray[i];
+                }
+                let gjennomsnitt = sum / alderArray.length;
+                console.log("Gjennomsnittsalderen er " + gjennomsnitt)          /*Flyttet på console.log()*/
+            } regnUtGjennomsnitt(alderArray)                                    /*Bytter ut return gjennomsnitt med regnUtGjennomsnitt(alderArray)*/
+
+            /* Fjerner funksjon visResultat()
+            - regnUtGjennomsnitt trenger ikke å stå i en variabel, ettersom den kalles på bare 
+            ved å stå i koden.
+            - Fjerner "return gjennomsnitt og bytter med "regnUtGjennomsnitt()" som vil gjøre det samme.
+            - "let alderArray" trenger ikke å stå en funksjon.
+            - console.log() trenger ikke å stå i denne funksjonen.
+            - "visResultat()" er tom og kan fjernes.
+            */
+    </script>
+</body>
+</html>
